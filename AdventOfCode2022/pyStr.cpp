@@ -53,6 +53,12 @@ bool pyStr::operator==(pyStr& s)
 	return s.std_string() == _str;
 }
 
+bool pyStr::operator==(const char* s)
+{
+	std::string s_std = s;
+	return s == _str;
+}
+
 int pyStr::len() // length - size of pyStr
 {
 	return (int) std_string().size();

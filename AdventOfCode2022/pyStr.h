@@ -16,6 +16,7 @@ public :
 	pyStr operator+(pyStr& s);
 	pyStr operator+(std::string& s);
 	bool operator==(pyStr& s);
+	bool operator==(const char* s);
 	std::vector<pyStr> split(std::string split_at);
 	pyStr substr(int start, int end);
 	pyStr startat(int start);
