@@ -17,6 +17,8 @@ public :
 	pyStr operator+(std::string& s);
 	bool operator==(pyStr& s);
 	bool operator==(const char* s);
+	bool operator!=(pyStr& s);
+	bool operator!=(const char* s);
 	std::vector<pyStr> split(std::string split_at);
 	pyStr substr(int start, int end);
 	pyStr startat(int start);
@@ -32,5 +34,5 @@ public :
 
 private:
 	std::string _str;
-	std::vector<pyStr> RemoveEmptyStrs(std::vector<pyStr> in_vec);
+	std::vector<pyStr> remove_empty_strs(std::vector<pyStr> in_vec);
 };

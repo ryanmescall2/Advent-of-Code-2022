@@ -59,6 +59,17 @@ bool pyStr::operator==(const char* s)
 	return s == _str;
 }
 
+bool pyStr::operator!=(pyStr& s)
+{
+	return s.std_string() != _str;
+}
+
+bool pyStr::operator!=(const char* s)
+{
+	std::string s_std = s;
+	return s != _str;
+}
+
 int pyStr::len() // length - size of pyStr
 {
 	return (int) std_string().size();
@@ -131,7 +142,7 @@ std::vector<pyStr> pyStr::split(std::string split_at) // equivalent to python sp
 				stack_chars = "";
 
 				if (_str_copy.size() == 0)
-					return RemoveEmptyStrs(split_return);
+					return remove_empty_strs(split_return);
 			}
 		}
 		else
@@ -143,7 +154,7 @@ std::vector<pyStr> pyStr::split(std::string split_at) // equivalent to python sp
 	}
 	if (split_return.size() != 0)
 		split_return.push_back(pyStr(_str_copy));
-	return RemoveEmptyStrs(split_return);
+	return remove_empty_strs(split_return);
 }
 
 pyStr pyStr::replace(std::string rplc, std::string rplc_with) // equivalent to python replace
@@ -212,7 +223,7 @@ bool pyStr::in(std::string& s) // check if string exists as a substring in the p
 	return true;
 }
 
-std::vector<pyStr> pyStr::RemoveEmptyStrs(std::vector<pyStr> in_vec)
+std::vector<pyStr> pyStr::remove_empty_strs(std::vector<pyStr> in_vec)
 {
 	std::vector<pyStr> return_vec;
 	for (int i = 0; i < in_vec.size(); i++) {

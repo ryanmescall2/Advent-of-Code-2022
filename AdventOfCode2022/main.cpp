@@ -19,5 +19,5 @@ int main()
 	//Day4();
 	//Day5();
 	//Day6();
-	//Day7();
+	Day7();
 }
